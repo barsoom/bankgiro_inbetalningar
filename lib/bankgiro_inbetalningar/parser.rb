@@ -193,7 +193,7 @@ module BankgiroInbetalningar
 
 
   class Result
-    attr_accessor :timestamp, :deposits, :valid, :errors
+    attr_accessor :timestamp, :deposits, :errors
 
     def initialize
       @deposits = []
