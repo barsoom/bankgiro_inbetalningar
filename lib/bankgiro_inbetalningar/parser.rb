@@ -14,6 +14,8 @@ module BankgiroInbetalningar
       parse_lines
     end
 
+    private
+
     def parse_lines
       @raw_data.each_line do |line|
         @line = line
@@ -44,8 +46,6 @@ module BankgiroInbetalningar
     def payment_line?
       @line[0] == '2'
     end
-
-    private
 
     # The parser is line by line, ignores line order and ignores lines
     # it doesn't understand. So we do a sanity check up front to avoid
