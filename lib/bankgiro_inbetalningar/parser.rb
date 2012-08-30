@@ -10,8 +10,8 @@ module BankgiroInbetalningar
 
     def run
       @result = Result.new
-      verify_bgmax || return
-      parse_lines
+      parse_lines if verify_bgmax
+      result
     end
 
     private

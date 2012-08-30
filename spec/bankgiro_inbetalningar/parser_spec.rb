@@ -85,7 +85,7 @@ module BankgiroInbetalningar
     context "parsing a broken sample file 4" do
       let(:data) { data_from_file('BgMaxfil4_broken.txt') }
       let(:parser) { Parser.new(data) }
-      let(:result) { parser.run ; parser.result }
+      let(:result) { parser.run }
 
       it "returns invalid results" do
         result.should_not be_valid
@@ -104,7 +104,7 @@ module BankgiroInbetalningar
     context "parsing a file that isn't BGMAX at all" do
       let(:data) { data_from_file('not_bgmax_at_all.pdf') }
       let(:parser) { Parser.new(data) }
-      let(:result) { parser.run ; parser.result }
+      let(:result) { parser.run }
 
       it "returns invalid results" do
         result.should_not be_valid

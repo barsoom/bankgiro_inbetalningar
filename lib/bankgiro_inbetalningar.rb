@@ -11,6 +11,5 @@ module BankgiroInbetalningar
   def self.parse_data(data)
     parser = Parser.new(data)
     parser.run
-    parser.result
   end
 end
