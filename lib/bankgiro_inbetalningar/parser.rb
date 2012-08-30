@@ -226,6 +226,8 @@ module BankgiroInbetalningar
       deposits.map(&:payments).flatten
     end
 
+    Payer = Struct.new(:name, :extra_name, :street, :postal_code, :city, :country, :org_no)
+
     class Deposit
       attr_accessor :bgno, :currency, :payments, :date
       def initialize
@@ -237,14 +239,12 @@ module BankgiroInbetalningar
       attr_accessor :cents, :references, :currency, :raw, :payer, :sender_bgno, :text, :date, :number
       def initialize
         @references = []
-        @raw = "".force_encoding('iso-8859-1')
+        @raw = "".force_encoding("ISO-8859-1")
       end
 
       def payer!
         @payer ||= Payer.new
       end
     end
-
-    Payer = Struct.new(:name, :extra_name, :street, :postal_code, :city, :country, :org_no)
   end
 end
