@@ -1,0 +1,3 @@
+A line without number prefix is ignored.
+05
+A line with number prefix is parsed and may explode.

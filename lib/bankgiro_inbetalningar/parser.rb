@@ -10,6 +10,7 @@ module BankgiroInbetalningar
 
     def run
       @result = Result.new
+      verify_bgmax || return
       parse_lines
     end
 
@@ -42,6 +43,21 @@ module BankgiroInbetalningar
 
     def payment_line?
       @line[0] == '2'
+    end
+
+    private
+
+    # The parser is line by line, ignores line order and ignores lines
+    # it doesn't understand. So we do a sanity check up front to avoid
+    # confusing parser errors later.
+    def verify_bgmax
+      if @raw_data.start_with?("01BGMAX")
+        true
+      else
+        @result.valid = false
+        @result.errors << "Doesn't look like a BGMAX file at all."
+        false
+      end
     end
   end
 

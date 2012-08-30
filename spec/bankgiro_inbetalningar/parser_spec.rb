@@ -81,6 +81,7 @@ module BankgiroInbetalningar
       end
 
     end
+
     context "parsing a broken sample file 4" do
       let(:data) { data_from_file('BgMaxfil4_broken.txt') }
       let(:parser) { Parser.new(data) }
@@ -96,6 +97,21 @@ module BankgiroInbetalningar
 
       it "reports the deposits count as being off" do
         result.errors.should include("Found 4 deposits but expected 5")
+      end
+    end
+
+    # It's an easy mistake to upload a BGMAX PDF instead of TXT.
+    context "parsing a file that isn't BGMAX at all" do
+      let(:data) { data_from_file('not_bgmax_at_all.pdf') }
+      let(:parser) { Parser.new(data) }
+      let(:result) { parser.run ; parser.result }
+
+      it "returns invalid results" do
+        result.should_not be_valid
+      end
+
+      it "reports the format as being wrong" do
+        result.errors.should include("Doesn't look like a BGMAX file at all.")
       end
     end
   end
