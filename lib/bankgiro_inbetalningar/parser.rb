@@ -54,7 +54,6 @@ module BankgiroInbetalningar
       if @raw_data.start_with?("01BGMAX")
         true
       else
-        @result.valid = false
         @result.errors << "Doesn't look like a BGMAX file at all."
         false
       end
@@ -183,13 +182,10 @@ module BankgiroInbetalningar
     field :deposits_count, 27..34, 'N:h0'
 
     def update(result)
-      result.valid = true
       unless result.payments.count == payments_count
-        result.valid = false
         result.errors << "Found #{result.payments.count} payments but expected #{payments_count}"
       end
       unless result.deposits.count == deposits_count
-        result.valid = false
         result.errors << "Found #{result.deposits.count} deposits but expected #{deposits_count}"
       end
     end
@@ -205,7 +201,7 @@ module BankgiroInbetalningar
     end
 
     def valid?
-      valid
+      errors.empty?
     end
 
     def new_deposit
