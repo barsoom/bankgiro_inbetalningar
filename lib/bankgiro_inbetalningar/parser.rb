@@ -139,7 +139,7 @@ module BankgiroInbetalningar
     field :extra_name, 38..72, 'A:vb'
 
     def update(result)
-      payer = result.payment.payer!
+      payer = result.payment.payer
       payer.name = name
       payer.extra_name = extra_name
     end
@@ -150,7 +150,7 @@ module BankgiroInbetalningar
     field :postal_code, 38..46, 'A:vb'
 
     def update(result)
-      payer = result.payment.payer!
+      payer = result.payment.payer
       payer.street = street
       payer.postal_code = postal_code
     end
@@ -162,7 +162,7 @@ module BankgiroInbetalningar
     field :country_code, 73..74, 'A:vb'
 
     def update(result)
-      payer = result.payment.payer!
+      payer = result.payment.payer
       payer.city = city
       payer.country = country if country != ''
     end
@@ -172,7 +172,7 @@ module BankgiroInbetalningar
     field :org_no, 3..14, 'N:h0'
 
     def update(result)
-      payer = result.payment.payer!
+      payer = result.payment.payer
       payer.org_no = org_no
     end
   end
@@ -242,7 +242,7 @@ module BankgiroInbetalningar
         @raw = "".force_encoding("ISO-8859-1")
       end
 
-      def payer!
+      def payer
         @payer ||= Payer.new
       end
     end
