@@ -110,7 +110,13 @@ module BankgiroInbetalningar
       payment = result.new_payment
       payment.cents = cents
       payment.currency = result.deposit.currency
+
+      payment.raw_references << reference
+      payment.reference_type = reference_type
+
+      # 2 = "The reference field contains a correct OCR number according to the agreement on OCR reference control, including any agreement on extended form registration with OCR reference control." per https://www.bankgirot.se/globalassets/dokument/tekniska-manualer/bankgiroreceivables_bankgiroinbetalningar_technicalmanual_en.pdf, table 5.
       payment.references << reference if reference_type == 2
+
       payment.sender_bgno = sender_bgno
       payment.number = number
     end
@@ -236,9 +242,10 @@ module BankgiroInbetalningar
     end
 
     class Payment
-      attr_accessor :cents, :references, :currency, :raw, :payer, :sender_bgno, :text, :date, :number
+      attr_accessor :cents, :raw_references, :references, :reference_type, :currency, :raw, :payer, :sender_bgno, :text, :date, :number
       def initialize
         @references = []
+        @raw_references = []
         @raw = "".force_encoding("ISO-8859-1")
       end
 

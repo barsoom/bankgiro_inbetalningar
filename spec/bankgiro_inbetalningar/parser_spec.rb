@@ -30,6 +30,8 @@ module BankgiroInbetalningar
       context "simplest OCR payment" do
         let(:payment) { result.payments[5] }
         it "has one reference" do
+          payment.reference_type.should == 2
+          payment.raw_references.should == ['535765']
           payment.references.should == ['535765']
           payment.currency.should == 'SEK'
           payment.cents.should == 500_00
