@@ -9,19 +9,22 @@ module BankgiroInbetalningar
 
   RSpec.describe BgmaxLine do
     it "knows its children" do
-      BgmaxLine.parsers['00'].should == Tk00
+      expect(BgmaxLine.parsers['00']).to eq(Tk00)
     end
+
     context "fields" do
       subject { Tk00.new("00SEK0001234") }
 
       it "can be strings" do
-        subject.currency.should == 'SEK'
+        expect(subject.currency).to eq('SEK')
       end
+
       it "can be a 0-padded number" do
-        subject.cents.should == 123
+        expect(subject.cents).to eq 123
       end
+
       it 'can be a numeric flag' do
-        subject.flag.should == 4
+        expect(subject.flag).to eq 4
       end
     end
   end

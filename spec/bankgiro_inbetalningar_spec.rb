@@ -6,13 +6,13 @@ RSpec.describe BankgiroInbetalningar do
       subject { BankgiroInbetalningar.parse(fixture_path('minimal.txt')) }
 
       it "finds the timestamp" do
-        subject.timestamp.should == "2004 05 25 173035 010331".gsub(' ','').to_i
+        expect(subject.timestamp).to eq "2004 05 25 173035 010331".gsub(' ','').to_i
       end
       it "finds 1 deposit" do
-        subject.deposits.count.should == 1
+        expect(subject.deposits.count).to eq 1
       end
       it "finds 1 payment" do
-        subject.deposits.first.payments.count.should == 1
+        expect(subject.deposits.first.payments.count).to eq 1
       end
     end
   end
@@ -23,13 +23,13 @@ RSpec.describe BankgiroInbetalningar do
       subject { BankgiroInbetalningar.parse_data(data) }
 
       it "finds the timestamp" do
-        subject.timestamp.should == "2004 05 25 173035 010331".gsub(' ','').to_i
+        expect(subject.timestamp).to eq "2004 05 25 173035 010331".gsub(' ','').to_i
       end
       it "finds 1 deposit" do
-        subject.deposits.count.should == 1
+        expect(subject.deposits.count).to eq 1
       end
       it "finds 1 payment" do
-        subject.deposits.first.payments.count.should == 1
+        expect(subject.deposits.first.payments.count).to eq 1
       end
     end
   end
