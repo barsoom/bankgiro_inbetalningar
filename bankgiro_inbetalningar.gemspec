@@ -8,8 +8,6 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Bankgirot has changed its file format, making the +rbankgiro+ gem unusable for new clients.}
   gem.homepage      = "https://github.com/spnab/bankgiro_inbetalningar"
 
-  gem.add_development_dependency "rspec", '~> 2.9.0'
-
   gem.files         = `git ls-files`.split($\)
   gem.name          = "bankgiro_inbetalningar"
   gem.require_paths = ["lib"]
