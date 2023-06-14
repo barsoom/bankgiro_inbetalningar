@@ -2,7 +2,7 @@
 require_relative '../spec_helper'
 
 module BankgiroInbetalningar
-  describe Parser do
+  RSpec.describe Parser do
     context "parsing sample file 4" do
       let(:data) { data_from_file('BgMaxfil4.txt') }
       let(:parser) { Parser.new(data) }

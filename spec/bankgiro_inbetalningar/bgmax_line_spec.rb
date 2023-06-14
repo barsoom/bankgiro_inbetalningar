@@ -6,7 +6,8 @@ module BankgiroInbetalningar
     field :cents, 6..11, 'N:h0'
     field :flag, 12, 'N:-'
   end
-  describe BgmaxLine do
+
+  RSpec.describe BgmaxLine do
     it "knows its children" do
       BgmaxLine.parsers['00'].should == Tk00
     end
