@@ -6,6 +6,10 @@ This gem parses [Bankgirot's](https://www.bankgirot.se/) payments received files
 [English](https://www.bankgirot.se/globalassets/dokument/tekniska-manualer/bankgiroreceivables_bankgiroinbetalningar_technicalmanual_en.pdf))
 and returns the payment data in a relatively provider-agnostic format.
 
+## Requirements
+
+Tested on Ruby 3.3 and later.
+
 ## Installation
 
 Add this line to your application's Gemfile:
