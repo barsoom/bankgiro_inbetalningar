@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BankgiroInbetalningar
   class BgmaxLine
     class << self

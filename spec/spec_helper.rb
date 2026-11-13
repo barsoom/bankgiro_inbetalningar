@@ -1,5 +1,6 @@
-$: << File.expand_path('../../lib', __FILE__)
-require 'bankgiro_inbetalningar'
+# frozen_string_literal: true
+
+require "bankgiro_inbetalningar"
 
 def data_from_file(name)
   File.read(fixture_path(name)).force_encoding("ISO-8859-1")

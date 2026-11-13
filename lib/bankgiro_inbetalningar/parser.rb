@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'date'
 
 module BankgiroInbetalningar
@@ -246,7 +248,7 @@ module BankgiroInbetalningar
       def initialize
         @references = []
         @raw_references = []
-        @raw = "".force_encoding("ISO-8859-1")
+        @raw = String.new(encoding: "ISO-8859-1")
       end
 
       def payer
