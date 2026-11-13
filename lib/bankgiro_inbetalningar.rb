@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "bankgiro_inbetalningar/version"
 require "bankgiro_inbetalningar/bgmax_line"
 require "bankgiro_inbetalningar/parser"
