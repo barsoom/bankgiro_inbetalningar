@@ -1,8 +1,10 @@
 # BankgiroInbetalningar
 
-This gem parses [Bankgirot's](http://bankgirot.se) payments received files
-([BgMax](http://www.bgc.se/Default____5641.aspx)) and returns the payment
-data in a relatively provider-agnostic format.
+This gem parses [Bankgirot's](https://www.bankgirot.se/) payments received files
+(BgMax, described in the Bankgiro Inbetalningar technical manual:
+[Swedish](https://www.bankgirot.se/globalassets/dokument/tekniska-manualer/bankgiroinbetalningar_tekniskmanual_sv.pdf),
+[English](https://www.bankgirot.se/globalassets/dokument/tekniska-manualer/bankgiroreceivables_bankgiroinbetalningar_technicalmanual_en.pdf))
+and returns the payment data in a relatively provider-agnostic format.
 
 ## Installation
 
